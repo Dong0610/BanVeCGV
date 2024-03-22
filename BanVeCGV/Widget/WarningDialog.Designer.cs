@@ -86,7 +86,7 @@
 			this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Info;
 			this.iconButton1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
 			this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.iconButton1.IconSize = 32;
+			this.iconButton1.IconSize = 24;
 			this.iconButton1.Location = new System.Drawing.Point(0, 0);
 			this.iconButton1.Name = "iconButton1";
 			this.iconButton1.Size = new System.Drawing.Size(36, 39);
@@ -155,11 +155,11 @@
 			this.btnOk.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
 			this.btnOk.OnDisabledState.IconLeftImage = null;
 			this.btnOk.OnDisabledState.IconRightImage = null;
-			this.btnOk.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+			this.btnOk.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
 			this.btnOk.onHoverState.BorderRadius = 5;
 			this.btnOk.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
 			this.btnOk.onHoverState.BorderThickness = 1;
-			this.btnOk.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+			this.btnOk.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
 			this.btnOk.onHoverState.ForeColor = System.Drawing.Color.White;
 			this.btnOk.onHoverState.IconLeftImage = null;
 			this.btnOk.onHoverState.IconRightImage = null;
@@ -171,11 +171,11 @@
 			this.btnOk.OnIdleState.ForeColor = System.Drawing.Color.White;
 			this.btnOk.OnIdleState.IconLeftImage = null;
 			this.btnOk.OnIdleState.IconRightImage = null;
-			this.btnOk.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+			this.btnOk.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
 			this.btnOk.OnPressedState.BorderRadius = 5;
 			this.btnOk.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
 			this.btnOk.OnPressedState.BorderThickness = 1;
-			this.btnOk.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+			this.btnOk.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
 			this.btnOk.OnPressedState.ForeColor = System.Drawing.Color.White;
 			this.btnOk.OnPressedState.IconLeftImage = null;
 			this.btnOk.OnPressedState.IconRightImage = null;

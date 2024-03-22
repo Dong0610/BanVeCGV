@@ -10,7 +10,7 @@ namespace BanVeCGV.Models
 
 
 
-	public class User
+	public class Users
 	{
 		public int UserID { get; set; }
 		public string UserName { get; set; }
@@ -19,7 +19,7 @@ namespace BanVeCGV.Models
 		public string Phone { get; set; }
 		public int AccountType { get; set; }
 
-		public User(int userID, string userName, string email, string password, string phone, int accountType)
+		public Users(int userID, string userName, string email, string password, string phone, int accountType)
 		{
 			UserID = userID;
 			UserName = userName;
@@ -29,7 +29,7 @@ namespace BanVeCGV.Models
 			AccountType = accountType;
 		}
 
-		public User(DataRow row)
+		public Users(DataRow row)
 		{
 			if (row == null)
 				throw new ArgumentNullException(nameof(row));
@@ -42,7 +42,9 @@ namespace BanVeCGV.Models
 			AccountType = Convert.ToInt32(row["AccountType"]);
 		}
 
-
+		public Users()
+		{
+		}
 	}
 
 

@@ -34,11 +34,11 @@
 			this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
 			this.panelMain = new Bunifu.UI.WinForms.BunifuPanel();
 			this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
+			this.txtMessage = new Bunifu.UI.WinForms.BunifuLabel();
 			this.btnOk = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
 			this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
 			this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
 			this.iconButton1 = new FontAwesome.Sharp.IconButton();
-			this.txtMessage = new Bunifu.UI.WinForms.BunifuLabel();
 			this.panelMain.SuspendLayout();
 			this.bunifuPanel1.SuspendLayout();
 			this.bunifuPanel2.SuspendLayout();
@@ -87,6 +87,22 @@
 			this.bunifuPanel1.Size = new System.Drawing.Size(414, 102);
 			this.bunifuPanel1.TabIndex = 4;
 			// 
+			// txtMessage
+			// 
+			this.txtMessage.AllowParentOverrides = false;
+			this.txtMessage.AutoEllipsis = false;
+			this.txtMessage.CursorType = null;
+			this.txtMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.txtMessage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+			this.txtMessage.Location = new System.Drawing.Point(0, 0);
+			this.txtMessage.Name = "txtMessage";
+			this.txtMessage.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.txtMessage.Size = new System.Drawing.Size(414, 102);
+			this.txtMessage.TabIndex = 5;
+			this.txtMessage.Text = "Thành công";
+			this.txtMessage.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+			this.txtMessage.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+			// 
 			// btnOk
 			// 
 			this.btnOk.AllowAnimations = true;
@@ -134,7 +150,7 @@
 			this.btnOk.IdleIconLeftImage = null;
 			this.btnOk.IdleIconRightImage = null;
 			this.btnOk.IndicateFocus = false;
-			this.btnOk.Location = new System.Drawing.Point(161, 203);
+			this.btnOk.Location = new System.Drawing.Point(160, 203);
 			this.btnOk.Name = "btnOk";
 			this.btnOk.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
 			this.btnOk.OnDisabledState.BorderRadius = 5;
@@ -144,11 +160,11 @@
 			this.btnOk.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
 			this.btnOk.OnDisabledState.IconLeftImage = null;
 			this.btnOk.OnDisabledState.IconRightImage = null;
-			this.btnOk.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+			this.btnOk.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
 			this.btnOk.onHoverState.BorderRadius = 5;
 			this.btnOk.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
 			this.btnOk.onHoverState.BorderThickness = 1;
-			this.btnOk.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+			this.btnOk.onHoverState.FillColor = System.Drawing.Color.Red;
 			this.btnOk.onHoverState.ForeColor = System.Drawing.Color.White;
 			this.btnOk.onHoverState.IconLeftImage = null;
 			this.btnOk.onHoverState.IconRightImage = null;
@@ -197,18 +213,19 @@
 			// bunifuLabel1
 			// 
 			this.bunifuLabel1.AllowParentOverrides = false;
+			this.bunifuLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
 			this.bunifuLabel1.AutoEllipsis = false;
 			this.bunifuLabel1.CursorType = null;
-			this.bunifuLabel1.Dock = System.Windows.Forms.DockStyle.Left;
 			this.bunifuLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
 			this.bunifuLabel1.ForeColor = System.Drawing.Color.Red;
-			this.bunifuLabel1.Location = new System.Drawing.Point(36, 0);
+			this.bunifuLabel1.Location = new System.Drawing.Point(32, 8);
 			this.bunifuLabel1.Name = "bunifuLabel1";
 			this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.bunifuLabel1.Size = new System.Drawing.Size(23, 39);
+			this.bunifuLabel1.Size = new System.Drawing.Size(23, 21);
 			this.bunifuLabel1.TabIndex = 3;
 			this.bunifuLabel1.Text = "Lỗi";
-			this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+			this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
 			this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
 			// 
 			// iconButton1
@@ -219,28 +236,12 @@
 			this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.EarthAfrica;
 			this.iconButton1.IconColor = System.Drawing.Color.Red;
 			this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-			this.iconButton1.IconSize = 32;
+			this.iconButton1.IconSize = 24;
 			this.iconButton1.Location = new System.Drawing.Point(0, 0);
 			this.iconButton1.Name = "iconButton1";
-			this.iconButton1.Size = new System.Drawing.Size(36, 39);
+			this.iconButton1.Size = new System.Drawing.Size(26, 39);
 			this.iconButton1.TabIndex = 0;
 			this.iconButton1.UseVisualStyleBackColor = true;
-			// 
-			// txtMessage
-			// 
-			this.txtMessage.AllowParentOverrides = false;
-			this.txtMessage.AutoEllipsis = false;
-			this.txtMessage.CursorType = null;
-			this.txtMessage.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.txtMessage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-			this.txtMessage.Location = new System.Drawing.Point(0, 0);
-			this.txtMessage.Name = "txtMessage";
-			this.txtMessage.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.txtMessage.Size = new System.Drawing.Size(90, 21);
-			this.txtMessage.TabIndex = 5;
-			this.txtMessage.Text = "Thành công";
-			this.txtMessage.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-			this.txtMessage.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
 			// 
 			// ErrorDialog
 			// 

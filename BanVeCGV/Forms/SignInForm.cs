@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BanVeCGV.Models;
+using BanVeCGV.Repo;
+using BanVeCGV.Widget;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,6 +34,20 @@ namespace BanVeCGV.Forms
 
 		private void btnDangNhap_Click(object sender, EventArgs e)
 		{
+			Users us =   UserRepo.LogginApp(edtEmail.Text.ToString(), edtPass.Text.ToString());
+			if (us!=null)
+			{
+				new SuccessDialog("Đăng nhập thành công", () =>
+				{
+					this.Hide();
+					new MainForms(us).ShowDialog();
+					this.Close();
+				}).ShowDialog();
+			}
+			else
+			{
+				new ErrorDialog("Tài khoản không tồn tại hoặc sai mật khẩu").ShowDialog();
+			}
 
 		}
 	}

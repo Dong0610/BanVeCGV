@@ -273,7 +273,7 @@
 			this.edtPass.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
 			this.edtPass.Cursor = System.Windows.Forms.Cursors.IBeam;
 			this.edtPass.DefaultFont = new System.Drawing.Font("Segoe UI", 11F);
-			this.edtPass.DefaultText = "";
+			this.edtPass.DefaultText = "10012902";
 			this.edtPass.FillColor = System.Drawing.Color.White;
 			this.edtPass.HideSelection = true;
 			this.edtPass.IconLeft = null;
@@ -281,7 +281,8 @@
 			this.edtPass.IconPadding = 10;
 			this.edtPass.IconRight = null;
 			this.edtPass.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-			this.edtPass.Lines = new string[0];
+			this.edtPass.Lines = new string[] {
+        "10012902"};
 			this.edtPass.Location = new System.Drawing.Point(52, 354);
 			this.edtPass.MaxLength = 32767;
 			this.edtPass.MinimumSize = new System.Drawing.Size(1, 1);
@@ -316,7 +317,7 @@
 			this.edtPass.ScrollBars = System.Windows.Forms.ScrollBars.None;
 			this.edtPass.SelectedText = "";
 			this.edtPass.SelectionLength = 0;
-			this.edtPass.SelectionStart = 0;
+			this.edtPass.SelectionStart = 8;
 			this.edtPass.ShortcutsEnabled = true;
 			this.edtPass.Size = new System.Drawing.Size(298, 40);
 			this.edtPass.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
@@ -347,7 +348,7 @@
 			this.edtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
 			this.edtEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
 			this.edtEmail.DefaultFont = new System.Drawing.Font("Segoe UI", 11F);
-			this.edtEmail.DefaultText = "";
+			this.edtEmail.DefaultText = "bdong0610@gmail.com";
 			this.edtEmail.FillColor = System.Drawing.Color.White;
 			this.edtEmail.HideSelection = true;
 			this.edtEmail.IconLeft = null;
@@ -355,7 +356,8 @@
 			this.edtEmail.IconPadding = 10;
 			this.edtEmail.IconRight = null;
 			this.edtEmail.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-			this.edtEmail.Lines = new string[0];
+			this.edtEmail.Lines = new string[] {
+        "bdong0610@gmail.com"};
 			this.edtEmail.Location = new System.Drawing.Point(52, 308);
 			this.edtEmail.MaxLength = 32767;
 			this.edtEmail.MinimumSize = new System.Drawing.Size(1, 1);
@@ -390,7 +392,7 @@
 			this.edtEmail.ScrollBars = System.Windows.Forms.ScrollBars.None;
 			this.edtEmail.SelectedText = "";
 			this.edtEmail.SelectionLength = 0;
-			this.edtEmail.SelectionStart = 0;
+			this.edtEmail.SelectionStart = 19;
 			this.edtEmail.ShortcutsEnabled = true;
 			this.edtEmail.Size = new System.Drawing.Size(298, 40);
 			this.edtEmail.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;

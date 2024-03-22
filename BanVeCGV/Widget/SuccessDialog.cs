@@ -24,8 +24,10 @@ namespace BanVeCGV.Widget
 
 		private void btnOk_Click(object sender, EventArgs e)
 		{
+			this.Hide();
 			okAction.Invoke();
 			this.Close();
+			
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e)

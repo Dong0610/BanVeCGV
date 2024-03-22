@@ -54,7 +54,7 @@
 			this.panelMain.BackgroundColor = System.Drawing.Color.White;
 			this.panelMain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelMain.BackgroundImage")));
 			this.panelMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.panelMain.BorderColor = System.Drawing.Color.Lime;
+			this.panelMain.BorderColor = System.Drawing.Color.Green;
 			this.panelMain.BorderRadius = 10;
 			this.panelMain.BorderThickness = 2;
 			this.panelMain.Controls.Add(this.bunifuPanel1);
@@ -96,7 +96,7 @@
 			this.txtMessage.AutoEllipsis = false;
 			this.txtMessage.CursorType = null;
 			this.txtMessage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-			this.txtMessage.Location = new System.Drawing.Point(179, 56);
+			this.txtMessage.Location = new System.Drawing.Point(3, 3);
 			this.txtMessage.Name = "txtMessage";
 			this.txtMessage.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.txtMessage.Size = new System.Drawing.Size(90, 21);
@@ -116,7 +116,7 @@
 			this.btnOk.AutoSizeLeftIcon = true;
 			this.btnOk.AutoSizeRightIcon = true;
 			this.btnOk.BackColor = System.Drawing.Color.Transparent;
-			this.btnOk.BackColor1 = System.Drawing.Color.LawnGreen;
+			this.btnOk.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
 			this.btnOk.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnOk.BackgroundImage")));
 			this.btnOk.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
 			this.btnOk.ButtonText = "OK";
@@ -148,7 +148,7 @@
 			this.btnOk.IdleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
 			this.btnOk.IdleBorderRadius = 5;
 			this.btnOk.IdleBorderThickness = 1;
-			this.btnOk.IdleFillColor = System.Drawing.Color.LawnGreen;
+			this.btnOk.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
 			this.btnOk.IdleIconLeftImage = null;
 			this.btnOk.IdleIconRightImage = null;
 			this.btnOk.IndicateFocus = false;
@@ -162,11 +162,11 @@
 			this.btnOk.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
 			this.btnOk.OnDisabledState.IconLeftImage = null;
 			this.btnOk.OnDisabledState.IconRightImage = null;
-			this.btnOk.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+			this.btnOk.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
 			this.btnOk.onHoverState.BorderRadius = 5;
 			this.btnOk.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
 			this.btnOk.onHoverState.BorderThickness = 1;
-			this.btnOk.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+			this.btnOk.onHoverState.FillColor = System.Drawing.Color.Lime;
 			this.btnOk.onHoverState.ForeColor = System.Drawing.Color.White;
 			this.btnOk.onHoverState.IconLeftImage = null;
 			this.btnOk.onHoverState.IconRightImage = null;
@@ -174,15 +174,15 @@
 			this.btnOk.OnIdleState.BorderRadius = 5;
 			this.btnOk.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
 			this.btnOk.OnIdleState.BorderThickness = 1;
-			this.btnOk.OnIdleState.FillColor = System.Drawing.Color.LawnGreen;
+			this.btnOk.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
 			this.btnOk.OnIdleState.ForeColor = System.Drawing.Color.White;
 			this.btnOk.OnIdleState.IconLeftImage = null;
 			this.btnOk.OnIdleState.IconRightImage = null;
-			this.btnOk.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+			this.btnOk.OnPressedState.BorderColor = System.Drawing.Color.Lime;
 			this.btnOk.OnPressedState.BorderRadius = 5;
 			this.btnOk.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
 			this.btnOk.OnPressedState.BorderThickness = 1;
-			this.btnOk.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+			this.btnOk.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
 			this.btnOk.OnPressedState.ForeColor = System.Drawing.Color.White;
 			this.btnOk.OnPressedState.IconLeftImage = null;
 			this.btnOk.OnPressedState.IconRightImage = null;
@@ -215,18 +215,19 @@
 			// bunifuLabel1
 			// 
 			this.bunifuLabel1.AllowParentOverrides = false;
+			this.bunifuLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
 			this.bunifuLabel1.AutoEllipsis = false;
 			this.bunifuLabel1.CursorType = null;
-			this.bunifuLabel1.Dock = System.Windows.Forms.DockStyle.Left;
 			this.bunifuLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
 			this.bunifuLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-			this.bunifuLabel1.Location = new System.Drawing.Point(36, 0);
+			this.bunifuLabel1.Location = new System.Drawing.Point(36, 12);
 			this.bunifuLabel1.Name = "bunifuLabel1";
 			this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.bunifuLabel1.Size = new System.Drawing.Size(90, 39);
+			this.bunifuLabel1.Size = new System.Drawing.Size(90, 21);
 			this.bunifuLabel1.TabIndex = 3;
 			this.bunifuLabel1.Text = "Thành công";
-			this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+			this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
 			this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
 			// 
 			// iconButton1
