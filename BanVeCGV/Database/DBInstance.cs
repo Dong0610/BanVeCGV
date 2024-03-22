@@ -6,6 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BanVeCGV.Models;
+using System.Windows.Markup;
 
 namespace BanVeCGV.Database
 {
@@ -15,8 +17,8 @@ namespace BanVeCGV.Database
 
 		private static DBInstance instance;
 
-		public String sqlString = @"Data Source=DongDong\sqlexpress;Initial Catalog=Quanlikhachsan;Integrated Security=True";
-
+		public String sqlString = @"Data Source=DongDong\sqlexpress;Initial Catalog=QuanlibanveCGV;Integrated Security=True";
+		
 		public static DBInstance Instance
 		{
 			get { if (instance == null) instance = new DBInstance(); return instance; }

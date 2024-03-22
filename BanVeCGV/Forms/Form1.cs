@@ -20,7 +20,7 @@ namespace BanVeCGV
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			WaringDialog dialog = new WaringDialog("Bạn có muốn thoát không", () =>
+			SuccessDialog dialog = new SuccessDialog("Bạn có muốn thoát không", () =>
 			{
 
 

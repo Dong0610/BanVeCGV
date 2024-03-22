@@ -7,14 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BanVeCGV.Interface;
 
-namespace BanVeCGV.Forms
+namespace BanVeCGV.Widget
 {
-	public partial class SignForm : Form
+	public partial class ErrorDialog :Form
 	{
-		public SignForm()
+		
+		public ErrorDialog(String mess)
 		{
 			InitializeComponent();
+			txtMessage.Text = mess;
+		}
+
+		private void btnOk_Click(object sender, EventArgs e)
+		{
+			
+			this.Close();
 		}
 	}
 }
