@@ -75,7 +75,7 @@
 			this.bunifuLabel1.Size = new System.Drawing.Size(72, 39);
 			this.bunifuLabel1.TabIndex = 3;
 			this.bunifuLabel1.Text = "Cảnh báo";
-			this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+			this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
 			this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
 			// 
 			// iconButton1

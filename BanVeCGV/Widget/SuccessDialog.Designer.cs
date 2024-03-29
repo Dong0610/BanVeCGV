@@ -255,6 +255,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "SuccessDialog";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SuccessDialog_KeyPress);
 			this.panelMain.ResumeLayout(false);
 			this.bunifuPanel1.ResumeLayout(false);
 			this.bunifuPanel1.PerformLayout();

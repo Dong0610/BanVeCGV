@@ -1,4 +1,5 @@
 ﻿using BanVeCGV.Forms.ChildForm;
+using BanVeCGV.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,14 +17,22 @@ namespace BanVeCGV.Forms
 {
 	public partial class MainForms : Form
 	{
+		public Users users;
 		public MainForms(Models.Users us)
 		{
 			InitializeComponent();
+			this.users = us;
 			this.MinimumSize = new System.Drawing.Size(1400, 850);
-
-			OpenChildForm(new HomeForm());
+			LoadUser(us);
+			OpenHomeOnMainPanel();
 
 		}
+
+		private void LoadUser(Users us)
+		{
+			txtUserName.Text = us.UsName;
+		}
+
 		[DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
 		private extern static void ReleaseCapture();
 		[DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -41,14 +50,14 @@ namespace BanVeCGV.Forms
 
 		private void icMiniApp_Click(object sender, EventArgs e)
 		{
-		//	try
-		//	{
-		//		WindowState = FormWindowState.Minimized;
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-		//	}
+			//	try
+			//	{
+			//		WindowState = FormWindowState.Minimized;
+			//	}
+			//	catch (Exception ex)
+			//	{
+			//		MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			//	}
 		}
 
 		private void icResizeApp_Click(object sender, EventArgs e)
@@ -67,6 +76,8 @@ namespace BanVeCGV.Forms
 			}
 		}
 
+		List<Form> StackPreviusForm = new List<Form>();
+
 		private Size GetTotalWorkingArea()
 		{
 			Rectangle bounds = new Rectangle();
@@ -76,27 +87,43 @@ namespace BanVeCGV.Forms
 			}
 			return bounds.Size;
 		}
-
-
 		private void btnClose_Click(object sender, EventArgs e)
 		{
 			Application.Exit();
 		}
-		Form form = null;
 
-		void OpenChildForm(Form childForm)
+		Form CurrentForm = null;
+		Stack<Form> PreviousForms = new Stack<Form>();
+
+		public void OpenChildForm(Form childForm)
 		{
-			if (form != null)
+			if (CurrentForm != null)
 			{
-				form.Close();
+				CurrentForm.Close();
 			}
-			form = childForm;
-			form.TopLevel = false;
-			form.FormBorderStyle = FormBorderStyle.None;
-			form.Dock = DockStyle.Fill;
-			pnMain.Controls.Add(form);
-			form.Show();
+			CurrentForm = childForm;
+			CurrentForm.TopLevel = false;
+			CurrentForm.FormBorderStyle = FormBorderStyle.None;
+			CurrentForm.Dock = DockStyle.Fill;
+			CurrentForm.FormClosed += (sender, e) => CurrentForm = null; // Release resources when closed
+			CurrentForm.Show();
+
+			pnMainLoad.Controls.Clear();
+			pnMainLoad.Controls.Add(CurrentForm); // Add the child form to the panel
 		}
+
+
+		private void btnHome_Click(object sender, EventArgs e)
+		{
+			OpenHomeOnMainPanel();
+		}
+
+		private void OpenHomeOnMainPanel()
+		{
+			HomeForm homeForm = new HomeForm();
+			OpenChildForm(homeForm);
+		}
+
 
 
 	}

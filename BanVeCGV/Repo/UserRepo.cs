@@ -9,31 +9,30 @@ using System.Threading.Tasks;
 
 namespace BanVeCGV.Repo
 {
-	public static class UserRepo
+	public class UserRepo : BaseRepo<Users>
 	{
-		public static bool isResigter(string username, string email, string passs)
+		public static  Users LogginApp(string v1, string v2)
 		{
-			string query = "INSERT INTO dbo.Users (UserName, Email, Password, Phone, AccountType) VALUES (N'" + username + "',N'" + email + "',N'" + passs + "', '', '')";
-			return DBInstance.Instance.ExcuteNoneQuery(query) > 0;
+			if (dbContext == null)
+			{
+				dbContext= new QuanlibvCGVContext();
+			}
+			Users us = null;
+			us= dbContext.Users.Where(t=> t.Email.Equals(v1)&& t.Password.Equals(v2)).FirstOrDefault<Users>();
+			return us;
 		}
 
-		public static Users LogginApp(string email,string pass)
+		public static bool isResigter(string name, string email, string pass)
 		{
-			var dtTable = DBInstance.Instance.ExcuteQuery("SELECT*FROM dbo.Users WHERE Email = N'"+email+"' AND Password =N'"+pass+"'");
-			if(dtTable == null) return null;
-            else if(dtTable.Rows.Count == 0)
-            {
-                 return null;
-            }
-			else
-			{
-				Users us = new Users();
-				foreach (DataRow dr in dtTable.Rows)
-				{
-					us =new  Users(dr);
-				}
-				return us;
-			}
-        }
+			initContex();
+			Users us = new Users();
+			us.UsName= name;
+			us.Email= email;
+			us.Password= pass;
+			us.Phone = "";
+			us.AccountType = 0;
+			return AddNew(us);
+		}
+
 	}
 }

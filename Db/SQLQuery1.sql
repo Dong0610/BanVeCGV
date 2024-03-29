@@ -5,7 +5,6 @@ USE QuanlibanveCGV
 GO
 
 
-
 -- Bảng Người dùng
 CREATE TABLE Users (
     UserID INT IDENTITY(100,1) PRIMARY KEY,

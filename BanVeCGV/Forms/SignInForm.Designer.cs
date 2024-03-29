@@ -40,6 +40,7 @@
 			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
 			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
 			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+			this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
 			this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
 			this.btnDangNhap = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
 			this.btnDangKi = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -48,10 +49,14 @@
 			this.btnClose = new FontAwesome.Sharp.IconButton();
 			this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
 			this.bunifuPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
+			// 
+			// bunifuElipse1
+			// 
+			this.bunifuElipse1.ElipseRadius = 5;
+			this.bunifuElipse1.TargetControl = this;
 			// 
 			// bunifuPanel1
 			// 
@@ -445,11 +450,6 @@
 			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pictureBox1.TabIndex = 4;
 			this.pictureBox1.TabStop = false;
-			// 
-			// bunifuElipse1
-			// 
-			this.bunifuElipse1.ElipseRadius = 5;
-			this.bunifuElipse1.TargetControl = this;
 			// 
 			// SignInForm
 			// 

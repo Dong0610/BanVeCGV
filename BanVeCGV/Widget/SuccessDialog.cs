@@ -40,5 +40,19 @@ namespace BanVeCGV.Widget
 			SuccessDialog dialog = new SuccessDialog(mess,ev);
 			dialog.ShowDialog();
 		}
+
+		private void SuccessDialog_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			
+				// Check if the Enter key is pressed
+				if (e.KeyChar == (char)Keys.Enter)
+				{
+				this.Hide();
+				okAction.Invoke();
+				this.Close();
+			}
+			
+
+		}
 	}
 }
