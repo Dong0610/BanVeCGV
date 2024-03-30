@@ -9,6 +9,8 @@ namespace BanVeCGV.Repo
 {
 	internal class CategoryRepo : BaseRepo<Category>
 	{
+		
+
 		internal static string getNameById(int? categoryId)
 		{
 			initContex();

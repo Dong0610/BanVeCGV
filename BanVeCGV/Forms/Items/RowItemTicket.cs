@@ -27,9 +27,13 @@ namespace BanVeCGV.Forms.Items
 		{
 			txtId.Text ="Mã vé: "+ tickets.TicketId.ToString();
 			txtPhong.Text="Phòng: "+ screenings.RoomNumber.ToString();
-			//txtSoghe.Text="Số ghế"+ screenings.RemainingSeats.ToString();
 			txtTgChieu.Text ="Giờ chiếu:"+ screenings.Times.ToString();
 
+		}
+
+		private void tbLayout_Click(object sender, EventArgs e)
+		{
+			action.Invoke(Tickets);
 		}
 	}
 }

@@ -14,5 +14,7 @@ namespace BanVeCGV.Repo
 			initContex();
 			return dbContext.TimeScreening.Where(t=> t.MovieId==movieId).ToList();
 		}
+
+
 	}
 }

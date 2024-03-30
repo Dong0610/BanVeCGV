@@ -102,13 +102,19 @@ namespace BanVeCGV.Forms.ChildForm
 			{
 				if (screenSelect == null)
 				{
-					new WarningDialog("Bạn chưa chọn suất chiếu").ShowDialog();
+					new WarningDialog("Bạn chưa chọn suất chiếu", () =>
+					{
+
+					}).ShowDialog();
 				}
 				else
 				{
 					if (screenSelect.Id == 0)
 					{
-						new WarningDialog("Bạn chưa chọn suất chiếu").ShowDialog();
+						new WarningDialog("Bạn chưa chọn suất chiếu",() =>
+						{
+
+						}).ShowDialog();
 					}
 					else
 					{
@@ -154,7 +160,7 @@ namespace BanVeCGV.Forms.ChildForm
 				int movieId = movieIdValue != null ? int.Parse(movieIdValue.ToString()) : 0;
 				string room = roomValue != null ? roomValue.ToString() : "N/A";
 				string time = timeValue != null ? timeValue.ToString() : "N/A";
-				int remainingSeats = remainingSeatsValue != null ? int.Parse(remainingSeatsValue.ToString()) : 0;
+				double remainingSeats = remainingSeatsValue != null ? double.Parse(remainingSeatsValue.ToString()) : 0;
 
 				
 				screenSelect = new TimeScreening()
@@ -163,6 +169,7 @@ namespace BanVeCGV.Forms.ChildForm
 					MovieId = movieId,
 					RoomNumber = room,
 					Times = time,
+					Price = remainingSeats,
 				};
 
 				txtSelect.Text = "Phòng: " + room + " Giờ chiếu: " + time;

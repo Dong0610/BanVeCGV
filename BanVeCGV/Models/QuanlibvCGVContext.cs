@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -33,8 +35,14 @@ namespace BanVeCGV.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+
+				string databasePath = Path.Combine(Application.StartupPath, "Database\\QuanlibvCGV.mdf");
+				String cnn = @"Data Source=.\SQLEXPRESS;AttachDbFilename="+databasePath+"; " +
+                    "Integrated Security=True;Connect Timeout=30;User Instance=True";
+
+
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=QuanlibvCGV;Trusted_Connection=True;");
+				optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=QuanlibvCGV;Trusted_Connection=True;");
             }
         }
 

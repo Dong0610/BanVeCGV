@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace BanVeCGV.Widget
 {
-	public partial class WarningDialog : Form
+	public partial class YesNoDialog : Form
 	{
-		Action action1 = null;
-		public WarningDialog(String mess, Action action)
+		Action<Boolean> Action= null;
+		public YesNoDialog(String mess, Action<Boolean> action)
 		{
 			InitializeComponent();
-			this.action1 = action;
+			this.Action = action;
 			txtMessage.Text = mess;
 		}
 
 		private void btnOk_Click(object sender, EventArgs e)
 		{
-			action1.Invoke();
+			Action.Invoke(true);
 			this.Close();
 		}
 
@@ -32,6 +32,12 @@ namespace BanVeCGV.Widget
 		{
 			SuccessDialog dialog = new SuccessDialog(mess, ev);
 			dialog.ShowDialog();
+		}
+
+		private void bnnNo_Click(object sender, EventArgs e)
+		{
+			Action.Invoke(false);
+			this.Close();
 		}
 	}
 }

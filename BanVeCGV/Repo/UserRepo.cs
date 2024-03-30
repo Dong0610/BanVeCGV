@@ -34,5 +34,10 @@ namespace BanVeCGV.Repo
 			return AddNew(us);
 		}
 
+		internal static Users getUserById(int? creatUsId)
+		{
+			initContex();
+			return dbContext.Users.Where(t=> t.UsId==creatUsId).FirstOrDefault();
+		}
 	}
 }

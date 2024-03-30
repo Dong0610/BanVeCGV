@@ -12,6 +12,13 @@ namespace BanVeCGV.Repo
 		public TicketRepo() {
 			initContex();
 		}
+
+		internal static int GetScreemIdByTicker(int ticketId)
+		{
+			initContex();
+			return (int)dbContext.Tickets.Where(t=>t.TicketId == ticketId).FirstOrDefault().ScreeningId;
+		}
+
 		internal static IEnumerable<Tickets> TicketByScreenID(int x)
 		{
 			initContex();

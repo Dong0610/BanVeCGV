@@ -1,5 +1,6 @@
 ﻿using BanVeCGV.Forms.ChildForm;
 using BanVeCGV.Models;
+using BanVeCGV.Widget;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -124,8 +125,33 @@ namespace BanVeCGV.Forms
 			OpenChildForm(homeForm);
 		}
 
+		private void btnBill_Click(object sender, EventArgs e)
+		{
+			OpenChildForm(new InvoicesForm(users));
+		}
 
+		
 
+		private void btnChard_Click(object sender, EventArgs e)
+		{
+			OpenChildForm(new DoanhThuForm(users));
+		}
+
+		private void btnNhanVien_Click(object sender, EventArgs e)
+		{
+			OpenChildForm(new UserForm(users));
+		}
+
+		private void btnDangXuat_Click(object sender, EventArgs e)
+		{
+			new YesNoDialog("Bạn có muốn thoát ứng dụng không", (b) =>
+			{
+				if(b)
+				{
+					Application.Exit();
+				}
+			}).ShowDialog();
+		}
 	}
 }
 
