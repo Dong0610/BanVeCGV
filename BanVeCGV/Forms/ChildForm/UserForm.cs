@@ -14,21 +14,21 @@ namespace BanVeCGV.Forms.ChildForm
 {
 	public partial class UserForm : Form
 	{
-		private Users GetUsers;
-		public UserForm(Models.Users users)
+		private TaiKhoan GetUsers;
+		public UserForm(Models.TaiKhoan users)
 		{
 			InitializeComponent();
 			GetUsers = users;
 
-			if (users.AccountType == 1) { InitAdmim(users); } else { InitUsers(users); }
+			if (users.VaiTro == "") { InitAdmim(users); } else { InitUsers(users); }
 
 		}
 
 		private BindingSource BindingSource = new BindingSource();
 
-		private void InitUsers(Users users)
+		private void InitUsers(TaiKhoan users)
 		{
-			BindingSource.DataSource = UserRepo.GetAll();
+			BindingSource.DataSource = TaiKhoanRepo.GetAll();
 
 			dtgvUsers.DataSource = BindingSource;
 			gbPass.Visible = false;
@@ -56,12 +56,12 @@ namespace BanVeCGV.Forms.ChildForm
 			edtAccounttype.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "AccountType", true, DataSourceUpdateMode.Never));
 		}
 
-		private void InitAdmim(Users users)
+		private void InitAdmim(TaiKhoan users)
 		{
-			BindingSource.DataSource = UserRepo.GetAll();
+			BindingSource.DataSource = TaiKhoanRepo.GetAll();
 
 			dtgvUsers.DataSource = BindingSource;
-			BindingSource.DataSource = UserRepo.GetAll();
+			BindingSource.DataSource = TaiKhoanRepo.GetAll();
 
 			dtgvUsers.DataSource = BindingSource;
 

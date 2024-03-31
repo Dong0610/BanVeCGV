@@ -14,7 +14,7 @@ namespace BanVeCGV.Forms.ChildForm
 	public partial class DoanhThuForm : Form
 	{
 		private BindingSource BindingSource= new BindingSource();
-		public DoanhThuForm(Models.Users users)
+		public DoanhThuForm(Models.TaiKhoan users)
 		{
 			InitializeComponent();
 
@@ -23,8 +23,7 @@ namespace BanVeCGV.Forms.ChildForm
 
 		private void LoadToGridView()
 		{
-			BindingSource.DataSource= RevenueRepo.GetRenuveDetail();
-			dtgvInvoices.DataSource = BindingSource;
+		
 			
 		}
 	}

@@ -14,29 +14,26 @@ namespace BanVeCGV.Forms.Items
 {
 	public partial class ItemBillSelet : UserControl
 	{
-		private Invoices Invoices;
-		Action<Invoices> Action;
-		public ItemBillSelet(Invoices invoices,Action<Invoices> iv)
+		
+		public ItemBillSelet()
 		{
 			InitializeComponent();
-			this.Invoices = invoices;
-			this.Action = iv;
-			LoadDataToView(invoices);
+			
 
 		}
 
-		private void LoadDataToView(Invoices invoices)
+		private void LoadDataToView( )
 		{
-			edtBillId.Text= invoices.MovieId.ToString();
-			edtName.Text = invoices.CustomerName;
-			edtPhone.Text = Invoices.CustomerPhome;
-			edtUSCresate.Text= ((Users)UserRepo.getUserById(invoices.CreatUsId)).UsName.ToString();
-			txtTimeCreate.Text= invoices.CreatedTime.ToString();
+		//	edtBillId.Text= invoices.MovieId.ToString();
+		//	edtName.Text = invoices.CustomerName;
+		//	edtPhone.Text = Invoices.CustomerPhome;
+		//	edtUSCresate.Text= ((Users)UserRepo.getUserById(invoices.CreatUsId)).UsName.ToString();
+		//	txtTimeCreate.Text= invoices.CreatedTime.ToString();
 		}
 
 		private void bunifuPanel1_Click(object sender, EventArgs e)
 		{
-			Action.Invoke(Invoices);
+		
 		}
 	}
 }

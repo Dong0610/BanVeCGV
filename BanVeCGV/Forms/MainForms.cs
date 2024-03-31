@@ -18,20 +18,20 @@ namespace BanVeCGV.Forms
 {
 	public partial class MainForms : Form
 	{
-		public Users users;
-		public MainForms(Models.Users us)
+		public TaiKhoan TaiKhoan;
+		public MainForms(Models.TaiKhoan us)
 		{
 			InitializeComponent();
-			this.users = us;
+			this.TaiKhoan = us;
 			this.MinimumSize = new System.Drawing.Size(1400, 850);
 			LoadUser(us);
 			OpenHomeOnMainPanel();
 
 		}
 
-		private void LoadUser(Users us)
+		private void LoadUser(TaiKhoan us)
 		{
-			txtUserName.Text = us.UsName;
+			txtUserName.Text = us.HoTen;
 		}
 
 		[DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -121,25 +121,25 @@ namespace BanVeCGV.Forms
 
 		private void OpenHomeOnMainPanel()
 		{
-			HomeForm homeForm = new HomeForm();
+			HomeForm homeForm = new HomeForm(TaiKhoan);
 			OpenChildForm(homeForm);
 		}
 
 		private void btnBill_Click(object sender, EventArgs e)
 		{
-			OpenChildForm(new InvoicesForm(users));
+			OpenChildForm(new DanhSachVe(TaiKhoan));
 		}
 
 		
 
 		private void btnChard_Click(object sender, EventArgs e)
 		{
-			OpenChildForm(new DoanhThuForm(users));
+			OpenChildForm(new DoanhThuForm(TaiKhoan));
 		}
 
 		private void btnNhanVien_Click(object sender, EventArgs e)
 		{
-			OpenChildForm(new UserForm(users));
+			OpenChildForm(new UserForm(TaiKhoan));
 		}
 
 		private void btnDangXuat_Click(object sender, EventArgs e)
@@ -151,6 +151,16 @@ namespace BanVeCGV.Forms
 					Application.Exit();
 				}
 			}).ShowDialog();
+		}
+
+		private void btnTaoVe_Click(object sender, EventArgs e)
+		{
+			OpenChildForm(new TaoVeForm(TaiKhoan, null));
+		}
+
+		private void btnQuanly_Click(object sender, EventArgs e)
+		{
+			OpenChildForm(new DanhSachVe(TaiKhoan));
 		}
 	}
 }

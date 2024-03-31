@@ -12,36 +12,54 @@ namespace BanVeCGV.Repo
 {
 	public abstract class BaseRepo<T> where T : class
 	{
-		public static QuanlibvCGVContext dbContext;
+		public static  QuanliCGVContext dbContext;
 		public BaseRepo()
 		{
-			dbContext = new QuanlibvCGVContext();
+			dbContext = new QuanliCGVContext();
 		}
 
-		public static void initContex()
+		public static void initContext()
 		{
 			if (dbContext == null)
 			{
-				dbContext = new QuanlibvCGVContext();
+				dbContext = new QuanliCGVContext();
 			}
 		}
 		public static IEnumerable<T> GetAll()
 		{
-			initContex();
+			initContext();
 			return dbContext.Set<T>().ToList();
 		}
 
 		public static T GetModelById(int id)
 		{
 
-			initContex();
+			initContext();
 			return dbContext.Set<T>().Find(id);
 		}
 
 
 		public static T FindById<T>(int id, string propertyName) where T : class
 		{
-			initContex();
+			initContext();
+
+			var dbSet = dbContext.Set<T>();
+			var parameter = Expression.Parameter(typeof(T), "x");
+			var property = Expression.Property(parameter, propertyName);
+			var lambda = Expression.Lambda<Func<T, bool>>(
+				Expression.Equal(property, Expression.Constant(id)),
+				parameter);
+
+			// Filter entities in the database based on the dynamically built expression
+			var filteredEntities = dbSet.Where(lambda);
+
+			// Execute the query locally to retrieve the first matching entity
+			return filteredEntities.FirstOrDefault();
+		}
+
+		public static T FindByKey<T>(Object id, string propertyName) where T : class
+		{
+			initContext();
 
 			var dbSet = dbContext.Set<T>();
 			var parameter = Expression.Parameter(typeof(T), "x");
@@ -60,7 +78,7 @@ namespace BanVeCGV.Repo
 
 		public static bool IsExistData<T>(string propertyName, object value) where T : class
 		{
-			initContex();
+			initContext();
 
 			var dbSet = dbContext.Set<T>();
 			var parameter = Expression.Parameter(typeof(T), "x");
@@ -84,7 +102,7 @@ namespace BanVeCGV.Repo
 		public static bool AddNew(T entity)
 		{
 
-			initContex();
+			initContext();
 			try
 			{
 				dbContext.Set<T>().Add(entity);
@@ -101,7 +119,7 @@ namespace BanVeCGV.Repo
 		public bool IsDeleteById(int id)
 		{
 
-			initContex();
+			initContext();
 			var entity = dbContext.Set<T>().Find(id);
 			if (entity != null)
 			{

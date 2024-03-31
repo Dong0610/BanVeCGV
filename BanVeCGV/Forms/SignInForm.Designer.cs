@@ -409,6 +409,7 @@
 			this.edtEmail.TextPlaceholder = "Email";
 			this.edtEmail.UseSystemPasswordChar = false;
 			this.edtEmail.WordWrap = true;
+			this.edtEmail.TextChanged += new System.EventHandler(this.edtEmail_TextChanged);
 			// 
 			// btnClose
 			// 

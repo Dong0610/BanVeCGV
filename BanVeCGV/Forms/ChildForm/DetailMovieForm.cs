@@ -17,131 +17,65 @@ namespace BanVeCGV.Forms.ChildForm
 	public partial class DetailMovieForm : Form
 	{
 		Action BackClick;
-		private Movies movies;
+		private MovieViewHome Phim;
 
 		Action<int> IdMove;
+		TaiKhoan TaiKhoan;
 
-		public DetailMovieForm(Models.Movies moves)
+		public DetailMovieForm(MovieViewHome movie, TaiKhoan taiKhoan)
 		{
 			InitializeComponent();
-			this.movies = moves;
-			LoadDetail(moves);
-
-			IdMove = x =>
+			this.Phim = movie;
+			LoadDetail(movie);
+			this.TaiKhoan = taiKhoan;
+			if (!TaiKhoan.VaiTro.Equals("Admin"))
 			{
-				var arr = TicketRepo.TicketByScreenID(x);
-				ticketBinding.DataSource = arr;
-				LoadToView();
-			};
+				btnThemSuat.Visible = false;
+			}
+			LoadToView();
+		}
 
-
+		private void LoadDetail(MovieViewHome movie)
+		{
+			edtmaPhim.Text = movie.PhimId.ToString();
+			edtTenPhim.Text = movie.TenPhim;
+			edtDoanhThu.Text = movie.Gia.ToString();
+			edtLinkAnhr.Text = movie.PhimAnh;
+			edtNgayChieu.Text = movie.NgayChieu;
+			edtTheLoai.Text = movie.TenTheLoai;
+			edtThoiLuong.Text = movie.ThoiLuong.ToString() + " phút";
+			edtDes.Text = movie.NoiDung;
+			ImgPreview.ImageLocation = movie.PhimAnh;
 
 		}
-		private BindingSource movieBinding = new BindingSource();
-		private BindingSource ticketBinding = new BindingSource();
+
+		private BindingSource DsVeBinding = new BindingSource();
+		private BindingSource SuatChieuBinding = new BindingSource();
 		private void LoadToView()
 		{
-			dtgvDsVe.DataSource = ticketBinding;
+			var data = GioChieuRepo.GetGioChieuByPhim(Phim.PhimId);
+			SuatChieuBinding.DataSource =data ;
+			dtgvSuatChieu.DataSource = SuatChieuBinding;
+			dtgvSuatChieu.Columns[0].HeaderText = "Mã xuất";
+			dtgvSuatChieu.Columns[1].HeaderText = "Giờ chiếu";
+			dtgvSuatChieu.Columns[3].Visible = false;
+			dtgvSuatChieu.Columns[4].Visible = false;
+			GioChieuID.DataBindings.Add(new Binding("Text", dtgvSuatChieu.DataSource, "GioChieuId", true, DataSourceUpdateMode.Never));
 
-			if (dtgvDsVe.DataSource != null)
-			{
-				dtgvDsVe.Columns[0].HeaderText = "Mã vé";
-				dtgvDsVe.Columns[1].HeaderText = "Mã suất";
-				dtgvDsVe.Columns[2].HeaderText = "Người tạo";
-				dtgvDsVe.Columns[3].HeaderText = "Số ghế";
-				dtgvDsVe.Columns[4].HeaderText = "Tình trạng";
-				dtgvDsVe.Columns[5].Visible = false;
-				//dtgvDsVe.Columns[6].Visible = false;
-				//dtgvDsVe.Columns[7].Visible = false;
-			}
+
 		}
 
 
-		private void LoadDetail(Movies moves)
-		{
-			txtName.Text = moves.Name;
-			ImagePreview.ImageLocation = moves.Image;
-			txtDienVien.Text = moves.Actor;
-			txtHangSx.Text = moves.Director;
-			txtTrailerLink.Text = moves.Image;
-			edtTheLoai.Text = CategoryRepo.getNameById(moves.CategoryId);
-			txtMota.Text = moves.Descripion;
-			movieBinding.DataSource = ScreeningRepo.getScreenById(moves.Id);
-
-			LoadDtgv(moves);
-		}
-
-		private void LoadDtgv(Movies moves)
-		{
-			dtgvSuatChieu.DataSource = movieBinding;
-			dtgvSuatChieu.Columns[5].Visible = false;
-			dtgvSuatChieu.Columns[6].Visible = false;
-			screningID.DataBindings.Add(new Binding("Text", dtgvSuatChieu.DataSource, "Id", true, DataSourceUpdateMode.Never));
-			screningID.Visible = true;
-			dtgvSuatChieu.Columns[0].HeaderText = "Mã";
-			dtgvSuatChieu.Columns[1].HeaderText = "Mã vé";
-			dtgvSuatChieu.Columns[2].HeaderText = "Phòng";
-			dtgvSuatChieu.Columns[3].HeaderText = "Thời gian";
-			dtgvSuatChieu.Columns[4].HeaderText = "Số ghế";
-
-		}
 
 		private void BackIcon_Click(object sender, EventArgs e)
 		{
 			MainForms mainForm = this.ParentForm as MainForms;
 			if (mainForm != null)
 			{
-				mainForm.OpenChildForm(new HomeForm());
+				mainForm.OpenChildForm(new HomeForm(TaiKhoan));
 			}
 		}
 
-		private void btnDatVe_Click(object sender, EventArgs e)
-		{
-			MainForms mainForm = this.ParentForm as MainForms;
-			if (mainForm != null)
-			{
-				if (screenSelect == null)
-				{
-					new WarningDialog("Bạn chưa chọn suất chiếu", () =>
-					{
-
-					}).ShowDialog();
-				}
-				else
-				{
-					if (screenSelect.Id == 0)
-					{
-						new WarningDialog("Bạn chưa chọn suất chiếu",() =>
-						{
-
-						}).ShowDialog();
-					}
-					else
-					{
-						mainForm.OpenChildForm(new DatVeForm(screenSelect, movies));
-					}
-				}
-			}
-		}
-
-		TimeScreening screenSelect = null;
-
-		private void screningID_TextChange(object sender, EventArgs e)
-		{
-			int dienVien;
-			if (string.IsNullOrEmpty(screningID.Text))
-			{
-				dienVien = 0;
-			}
-			else
-			{
-				if (!int.TryParse(screningID.Text, out dienVien))
-				{
-					dienVien = 0;
-				}
-			}
-			IdMove.Invoke(dienVien);
-		}
 
 		private void dtgvSuatChieu_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
@@ -154,28 +88,45 @@ namespace BanVeCGV.Forms.ChildForm
 				object movieIdValue = selectedRow.Cells[1].Value;
 				object roomValue = selectedRow.Cells[2].Value;
 				object timeValue = selectedRow.Cells[3].Value;
-				object remainingSeatsValue = selectedRow.Cells[4].Value;
 
-				int screeningId = screeningIdValue != null ? int.Parse(screeningIdValue.ToString()) : 0;
-				int movieId = movieIdValue != null ? int.Parse(movieIdValue.ToString()) : 0;
-				string room = roomValue != null ? roomValue.ToString() : "N/A";
-				string time = timeValue != null ? timeValue.ToString() : "N/A";
-				double remainingSeats = remainingSeatsValue != null ? double.Parse(remainingSeatsValue.ToString()) : 0;
 
-				
-				screenSelect = new TimeScreening()
-				{
-					Id = screeningId,
-					MovieId = movieId,
-					RoomNumber = room,
-					Times = time,
-					Price = remainingSeats,
-				};
 
-				txtSelect.Text = "Phòng: " + room + " Giờ chiếu: " + time;
 			}
 		}
 
+		private void btnTaoVe_Click(object sender, EventArgs e)
+		{
+			MainForms main= this.ParentForm as MainForms;
+			if (main != null)
+			{
+				if (GioChieu == null)
+				{
+					new WarningDialog("Bạn chưa chọn khung giờ chiếu", () => { }).ShowDialog();
+					return;
+				}
+				main.OpenChildForm(new TaoVeForm(TaiKhoan,GioChieu));
+			}
+		}
 
+		private void btnThemSuat_Click(object sender, EventArgs e)
+		{
+
+		}
+		private GioChieu GioChieu = null;
+
+		private void GioChieuID_TextChanged(object sender, EventArgs e)
+		{
+			int Id = GioChieuID.Text.Length!=0?int.Parse(GioChieuID.Text.ToString()) :0;
+			if (Id != 0)
+			{
+				List<DsVeBySuatChieu> vePhims = VePhimRepo.GetDSVeByGioChieu(Id);
+				DsVeBinding.DataSource = vePhims;
+				GioChieu = GioChieuRepo.FindById<GioChieu>(int.Parse(GioChieuID.Text.ToString()), "GioChieuId");
+				dtgvDsVe.DataSource = DsVeBinding;
+				dtgvDsVe.Columns[0].HeaderText = "Mã vé";
+			}
+			
+
+		}
 	}
 }

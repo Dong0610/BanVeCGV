@@ -34,7 +34,7 @@ namespace BanVeCGV.Forms
 
 		private void btnDangNhap_Click(object sender, EventArgs e)
 		{
-			Users us =   UserRepo.LogginApp(edtEmail.Text.ToString(), edtPass.Text.ToString());
+			TaiKhoan us =   TaiKhoanRepo.LogginApp(edtEmail.Text.ToString(), edtPass.Text.ToString());
 			if (us!=null)
 			{
 				new SuccessDialog("Đăng nhập thành công", () =>
@@ -48,6 +48,11 @@ namespace BanVeCGV.Forms
 			{
 				new ErrorDialog("Tài khoản không tồn tại hoặc sai mật khẩu").ShowDialog();
 			}
+
+		}
+
+		private void edtEmail_TextChanged(object sender, EventArgs e)
+		{
 
 		}
 	}

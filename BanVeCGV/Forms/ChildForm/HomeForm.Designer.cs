@@ -60,7 +60,7 @@
 			this.listPnViewMovie.Size = new System.Drawing.Size(1175, 252);
 			this.listPnViewMovie.TabIndex = 3;
 			this.listPnViewMovie.WrapContents = false;
-			this.listPnViewMovie.Paint += new System.Windows.Forms.PaintEventHandler(this.listPnViewMovie_Paint);
+			
 			// 
 			// bunifuPanel1
 			// 
@@ -78,7 +78,7 @@
 			this.bunifuPanel1.ShowBorders = true;
 			this.bunifuPanel1.Size = new System.Drawing.Size(1175, 252);
 			this.bunifuPanel1.TabIndex = 1;
-			this.bunifuPanel1.Click += new System.EventHandler(this.bunifuPanel1_Click);
+		
 			// 
 			// edtSearchKey
 			// 
@@ -154,7 +154,7 @@
 			this.edtSearchKey.TextPlaceholder = "Tìm kiếm...";
 			this.edtSearchKey.UseSystemPasswordChar = false;
 			this.edtSearchKey.WordWrap = true;
-			this.edtSearchKey.TextChanged += new System.EventHandler(this.edtSearchKey_TextChanged);
+	
 			this.edtSearchKey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.edtSearchKey_KeyDown);
 			// 
 			// bunifuPanel2
@@ -175,7 +175,7 @@
 			this.bunifuPanel2.ShowBorders = true;
 			this.bunifuPanel2.Size = new System.Drawing.Size(1175, 72);
 			this.bunifuPanel2.TabIndex = 2;
-			this.bunifuPanel2.Click += new System.EventHandler(this.bunifuPanel2_Click);
+			
 			// 
 			// icReload
 			// 

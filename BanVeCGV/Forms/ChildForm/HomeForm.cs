@@ -17,70 +17,60 @@ namespace BanVeCGV.Forms.ChildForm
 	public partial class HomeForm : Form
 	{
 		BindingSource bindingSource = new BindingSource();
-		Action<String,Movies> OpenNewForm;
-		public HomeForm()
+		Action<String, Phim> OpenNewForm;
+		private TaiKhoan TaiKhoan;
+		public HomeForm(TaiKhoan taiKhoan)
 		{
 			InitializeComponent();
 
-			bindingSource.DataSource = MovieRepo.GetAll();
+			bindingSource.DataSource = PhimRepo.GetViewHome();
 			dtgvMovie.DataSource = bindingSource;
-			
+			this.TaiKhoan = taiKhoan;
 			InitializeHeaders();
 
 
 			InitMovieView();
-		
+
 		}
 
 		private void InitMovieView()
 		{
-            foreach (var item in MovieRepo.GetAll())
-            {
+			foreach (var item in PhimRepo.GetAll())
+			{
 				ItemMovieView itemMovie = new ItemMovieView(item, (movie) =>
 				{
 					MainForms mainForm = this.ParentForm as MainForms;
 					if (mainForm != null)
 					{
-						mainForm.OpenChildForm(new DetailMovieForm(movie));
+						mainForm.OpenChildForm(new DetailMovieForm(PhimRepo.GetViewHomeById(movie.PhimId),TaiKhoan));
 					}
-				});
-				
+				},false);
+
 				itemMovie.TopLevel = false;
 				itemMovie.Show();
 				listPnViewMovie.Controls.Add(itemMovie);
-                
-            }
-        }
+
+			}
+		}
 
 
 
 		private void InitializeHeaders()
 		{
-		
 			dtgvMovie.Columns[0].HeaderText = "Mã phim";
-			dtgvMovie.Columns[1].HeaderText = "Tên Phim";
-			dtgvMovie.Columns[2].HeaderText = "Thể loại";
-			dtgvMovie.Columns[3].HeaderText = "Đạo diễn";
-			dtgvMovie.Columns[4].HeaderText = "Diễn viên";
-			dtgvMovie.Columns[5].HeaderText = "Mô tả";
-			dtgvMovie.Columns[6].Visible = false;
-			dtgvMovie.Columns[7].Visible = false;
-			dtgvMovie.Columns[8].Visible = false;
-
-			dtgvMovie.Columns[10].Visible = false;
+			dtgvMovie.Columns[1].Visible=false;
+			
+			dtgvMovie.Columns[2].HeaderText = "Tên phim";
+			dtgvMovie.Columns[3].HeaderText = "Ảnh";
+			dtgvMovie.Columns[4].HeaderText = "Ngày chiếu";
+			dtgvMovie.Columns[5].HeaderText = "Nội dung";
+			dtgvMovie.Columns[6].HeaderText = "Giá";
+			dtgvMovie.Columns[7].HeaderText = "Thời lượng";
+			dtgvMovie.Columns[8].HeaderText = "Thể loại";
 			dtgvMovie.Columns[9].Visible = false;
 
-
-
 		}
-		private void BindingData()
-		{
-			//tbmacv.DataBindings.Add(new Binding("Text", dtgvchucvu.DataSource, "Mã chức vụ", true, DataSourceUpdateMode.Never));
-			//tbtencv.DataBindings.Add(new Binding("Text", dtgvchucvu.DataSource, "Tên chức vụ", true, DataSourceUpdateMode.Never));
-			//tbhspk.DataBindings.Add(new Binding("Text", dtgvchucvu.DataSource, "Lương cơ bản", true, DataSourceUpdateMode.Never));
-			//tbluongcb.DataBindings.Add(new Binding("Text", dtgvchucvu.DataSource, "Phụ cấp", true, DataSourceUpdateMode.Never));
-		}
-
+		
 		private void icSearch_Click(object sender, EventArgs e)
 		{
 			SearchMovie();
@@ -88,7 +78,7 @@ namespace BanVeCGV.Forms.ChildForm
 
 		private void icReload_Click(object sender, EventArgs e)
 		{
-			bindingSource.DataSource= MovieRepo.GetAll();
+			bindingSource.DataSource = PhimRepo.GetAll();
 		}
 
 		private void edtSearchKey_KeyDown(object sender, KeyEventArgs e)
@@ -101,52 +91,17 @@ namespace BanVeCGV.Forms.ChildForm
 
 		private void SearchMovie()
 		{
-			List<Movies> movies = new List<Movies>();
-			IEnumerable<Movies> dbMovies = MovieRepo.GetAll();
+			List<Phim> movies = new List<Phim>();
+			IEnumerable<Phim> dbMovies = PhimRepo.GetAll();
 			string searchKey = edtSearchKey.Text.ToString();
-			foreach (Movies movie in dbMovies)
+			foreach (Phim movie in dbMovies)
 			{
-				if (movie.Name.Contains(searchKey) || movie.Descripion.Contains(searchKey) || movie.Director.Contains(searchKey))
+				if (movie.TenPhim.Contains(searchKey) || movie.NoiDung.Contains(searchKey) || movie.TheLoai.TenTheLoai.Contains(searchKey))
 				{
 					movies.Add(movie);
 				}
 			}
 			bindingSource.DataSource = movies;
-		}
-
-		private void bunifuPanel2_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void listPnViewMovie_Paint(object sender, PaintEventArgs e)
-		{
-
-		}
-
-		private void edtSearchKey_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void bunifuPanel1_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void pndtgv_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void dtgvMovie_CellContentClick(object sender, DataGridViewCellEventArgs e)
-		{
-
-		}
-
-		private void usersBindingSource_CurrentChanged(object sender, EventArgs e)
-		{
-
 		}
 	}
 }

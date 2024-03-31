@@ -33,9 +33,9 @@ namespace BanVeCGV.Forms
 			string pass = edtPass.Text.ToString();
 			if (CheckAllValue(name, email, pass))
 			{
-				if (UserRepo.isResigter(name, email, pass))
+				if (TaiKhoanRepo.isResigter(name, email, pass))
 				{
-					Users us= UserRepo.LogginApp(email,pass);
+					TaiKhoan us= TaiKhoanRepo.LogginApp(email,pass);
 					new SuccessDialog("Đăng kí tài khoản thành công", () =>
 					{
 						this.Hide();

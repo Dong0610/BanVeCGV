@@ -16,36 +16,30 @@ namespace BanVeCGV.Widget
 {
 	public partial class ItemMovieView : Form
 	{
-		private Movies Movies;
-		private Action<Movies> Action;
-		public ItemMovieView(Movies movies, Action<Movies> action)
+		private Phim Phim;
+		private Action<Phim> Action;
+		public ItemMovieView(Phim Phim, Action<Phim> action, bool isSmall)
 		{
 			InitializeComponent();
-			this.Movies = movies;
+			this.Phim = Phim;
 			this.Action = action;
+			if (isSmall)
+			{
+				this.Size = new System.Drawing.Size(264,200);
+			}
 			
-			txtNameMovie.Text= movies.Name;
-			pnItemView.Click +=_DetailMovies ;
-			LoadImageFromUrl(movies.Image, pnItemView);
-			ImgTraler.ImageLocation=(movies.Image);
+			txtNameMovie.Text= Phim.TenPhim;
+		
+			txtTheLoai.Text =TheLoaiRepo.FindById<TheLoai>(Phim.TheLoaiId, "TheLoaiId").TenTheLoai;
+			txtThoiLuong.Text= Phim.ThoiLuong.ToString();
+			ImgTraler.ImageLocation=(Phim.Anh);
+			}
 
-			txtDoanhThu.Text ="Doanh thu: "+ RevenueRepo.FindById<Revenue>(int.Parse(movies.CategoryId.ToString()), "Id").TotalPrice.ToString();
-		}
 
-		private void _DetailMovies(object sender, EventArgs e)
+		private void pnView_Click(object sender, EventArgs e)
 		{
-			Action.Invoke(Movies);
-		}
+			Action.Invoke(Phim);
 
-
-		private void LoadImageFromUrl(string url, BunifuPanel picture)
-		{
-			
-		}
-
-		private void ItemMovieView_Load(object sender, EventArgs e)
-		{
-			
 		}
 	}
 }
